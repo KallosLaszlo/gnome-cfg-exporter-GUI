@@ -7,14 +7,14 @@
 Built with [Go](https://go.dev/) + [Wails](https://wails.io/) + [Svelte](https://svelte.dev/) + [Tailwind CSS](https://tailwindcss.com/)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![CodeQL](https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI/actions/workflows/codeql.yml/badge.svg)](https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI/actions/workflows/codeql.yml)
+[![CodeQL](https://github.com/KallosLaszlo/gnome-config-backup-GUI/actions/workflows/codeql.yml/badge.svg)](https://github.com/KallosLaszlo/gnome-config-backup-GUI/actions/workflows/codeql.yml)
 [![Support me on Ko-fi](https://img.shields.io/badge/Support%20me%20on-Ko--fi-F16061?logo=ko-fi&logoColor=white)](https://ko-fi.com/laszlokallos)
 
 </div>
 
 ---
 
-> **⚠️ This project is under active development.** Bug reports, feature requests, and pull requests are very welcome and greatly appreciated! Feel free to open an [issue](https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI/issues) or submit a PR.
+> **⚠️ This project is under active development.** Bug reports, feature requests, and pull requests are very welcome and greatly appreciated! Feel free to open an [issue](https://github.com/KallosLaszlo/gnome-config-backup-GUI/issues) or submit a PR.
 
 > **🐚 Prefer the command line?** Check out [GNOME Config Exporter (CLI)](https://github.com/KallosLaszlo/gnome-config-backup) — a standalone Bash script with the same functionality, no dependencies beyond `dconf` and `rsync`.
 
@@ -41,7 +41,7 @@ Built with [Go](https://go.dev/) + [Wails](https://wails.io/) + [Svelte](https:/
 
 ### Download from Releases (recommended)
 
-1. Go to the [Releases](https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI/releases) page
+1. Go to the [Releases](https://github.com/KallosLaszlo/gnome-config-backup-GUI/releases) page
 2. Download the latest `gnome-cfg-exporter` binary for your architecture
 3. Make it executable and run:
 
@@ -65,7 +65,7 @@ sudo mv gnome-cfg-exporter /usr/local/bin/
 go install github.com/wailsapp/wails/v2/cmd/wails@latest
 
 # Clone and build
-git clone https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI.git
+git clone https://github.com/KallosLaszlo/gnome-config-backup-GUI.git
 cd gnome-cfg-exporter
 wails build
 ```
