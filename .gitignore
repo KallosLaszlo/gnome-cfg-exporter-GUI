@@ -1,0 +1,36 @@
+# Build output
+build/bin/
+dist/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# Wails generated bindings
+frontend/wailsjs/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Temp
+*.tmp
+*.log
+gen_*.py
+patch_*.py

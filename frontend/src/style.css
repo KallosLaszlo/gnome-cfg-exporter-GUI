@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  @apply bg-base-300 text-base-content m-0 p-0 h-full;
+  font-family: 'Cantarell', 'Segoe UI', sans-serif;
+}
+
+#app {
+  @apply h-screen flex flex-col overflow-hidden select-none;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { @apply bg-base-200; }
+::-webkit-scrollbar-thumb { @apply bg-base-content/20 rounded; }
+::-webkit-scrollbar-thumb:hover { @apply bg-base-content/40; }
