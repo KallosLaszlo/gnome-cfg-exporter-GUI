@@ -75,14 +75,17 @@ jobs:
         with:
           generate_release_notes: true
           body: |
-            ## Which binary should I download?
+            ## 📦 Which binary should I download?
 
-            | Binary | Compatible distros |
-            |--------|-------------------|
-            | `gnome-cfg-exporter-webkit2gtk-4.0` | Ubuntu 20.04–22.04, Mint 20–21, Fedora 36–39, Debian 11–12 |
-            | `gnome-cfg-exporter-webkit2gtk-4.1` | Ubuntu 24.04+, Fedora 40+, Debian 13+, Arch, Manjaro, openSUSE Tumbleweed |
+            > **Not sure?** Run this in a terminal:
+            > ```
+            > pkg-config --modversion webkit2gtk-4.1 2>/dev/null && echo "→ Download the 4.1 build" || echo "→ Download the 4.0 build"
+            > ```
 
-            **How to check:** Run `pkg-config --modversion webkit2gtk-4.1` — if it returns a version, use the `4.1` build. Otherwise use `4.0`.
+            | Binary | For | Distros |
+            |--------|-----|---------|
+            | **gnome-cfg-exporter-webkit2gtk-4.1** | 🟢 Modern distros (2024+) | Ubuntu 24.04+, Fedora 40+, Arch, Manjaro, openSUSE TW, Debian 13+ |
+            | **gnome-cfg-exporter-webkit2gtk-4.0** | 🟡 Older distros | Ubuntu 20.04–22.04, Mint 20–21, Fedora 36–39, Debian 11–12 |
           files: |
             artifacts/gnome-cfg-exporter-webkit2gtk-4.0
             artifacts/gnome-cfg-exporter-webkit2gtk-4.1
