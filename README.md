@@ -16,7 +16,7 @@ Built with [Go](https://go.dev/) + [Wails](https://wails.io/) + [Svelte](https:/
 
 > **⚠️ This project is under active development.** Bug reports, feature requests, and pull requests are very welcome and greatly appreciated! Feel free to open an [issue](https://github.com/KallosLaszlo/gnome-cfg-exporter-GUI/issues) or submit a PR.
 
-> **🐚 Prefer the command line?** Check out [GNOME Config Exporter (CLI)](https://github.com/KallosLaszlo/gnome-cfg-exporter) — a standalone Bash script with the same functionality, no dependencies beyond `dconf` and `rsync`.
+> **🐚 Prefer the command line?** Check out [GNOME Config Exporter (CLI)](https://github.com/KallosLaszlo/gnome-auto-steam-icon-fixer) — a standalone Bash script with the same functionality, no dependencies beyond `dconf` and `rsync`.
 
 ---
 
