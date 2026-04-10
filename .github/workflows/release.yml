@@ -10,8 +10,21 @@ permissions:
 
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-22.04
+    name: Build (${{ matrix.label }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      matrix:
+        include:
+          - runner: ubuntu-22.04
+            webkit: libwebkit2gtk-4.0-dev
+            label: webkit2gtk-4.0
+            suffix: "-webkit2gtk-4.0"
+            build-tags: ""
+          - runner: ubuntu-24.04
+            webkit: libwebkit2gtk-4.1-dev
+            label: webkit2gtk-4.1
+            suffix: "-webkit2gtk-4.1"
+            build-tags: "-tags webkit2_41"
 
     steps:
       - name: Checkout
@@ -33,16 +46,45 @@ jobs:
       - name: Install Linux dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev
+          sudo apt-get install -y libgtk-3-dev ${{ matrix.webkit }}
 
       - name: Build
-        run: wails build -clean
+        run: |
+          wails build -clean ${{ matrix.build-tags }}
+          mv build/bin/gnome-cfg-exporter build/bin/gnome-cfg-exporter${{ matrix.suffix }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gnome-cfg-exporter${{ matrix.suffix }}
+          path: build/bin/gnome-cfg-exporter${{ matrix.suffix }}
+
+  release:
+    name: Create Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+          merge-multiple: true
 
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
+          body: |
+            ## Which binary should I download?
+
+            | Binary | Compatible distros |
+            |--------|-------------------|
+            | `gnome-cfg-exporter-webkit2gtk-4.0` | Ubuntu 20.04–22.04, Mint 20–21, Fedora 36–39, Debian 11–12 |
+            | `gnome-cfg-exporter-webkit2gtk-4.1` | Ubuntu 24.04+, Fedora 40+, Debian 13+, Arch, Manjaro, openSUSE Tumbleweed |
+
+            **How to check:** Run `pkg-config --modversion webkit2gtk-4.1` — if it returns a version, use the `4.1` build. Otherwise use `4.0`.
           files: |
-            build/bin/gnome-cfg-exporter
+            artifacts/gnome-cfg-exporter-webkit2gtk-4.0
+            artifacts/gnome-cfg-exporter-webkit2gtk-4.1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
